@@ -20,9 +20,38 @@ An automated, local ELT (Extract, Load, Transform) data pipeline tracking engine
 [ Engineering Insights ]    --> Cycle times, Contributor concentration, Intake velocity
 ```
 
-Key Findings
+# Key Findings
+
 Review Velocity: Polars exhibits significantly faster PR turnaround (median cycle time of ~5.5 hours, 25th percentile of 1.4 hours) compared to DuckDB (median ~27.4 hours, 25th percentile 14.1 hours), reflecting differing CI test matrices and review workflows.
 
 Contributor Centralization: Polars PR throughput is heavily concentrated, with the top 2 maintainers driving >51% of all merged PRs. DuckDB exhibits higher contributor diversification, with its top contributor accounting for 12.2% and work distributed across specialized maintainers.
 
 Intake Dynamics: DuckDB PRs submitted on Fridays experience a steep review stall over weekends (median cycle time jumping to ~66 hours), whereas Polars maintains steady weekend turnaround.
+
+# Tech Stack
+Language: Python 3.10+
+
+Storage & Engine: DuckDB (Embedded OLAP)
+
+Ingestion: requests, python-dotenv
+
+Modeling: ANSI SQL (Common Table Expressions, Window Functions, Dimensional Modeling)
+
+# Project Structure
+```
+├── config/             # Environment configuration
+├── data/
+│   ├── raw/            # Landing zone for raw API JSON payloads
+│   └── warehouse.duckdb# Local DuckDB OLAP database
+├── sql/
+│   ├── transform.sql   # Star schema creation (dims and facts)
+│   └── analytics_queries.sql
+├── src/
+│   ├── extract.py      # GitHub API pagination and rate-limit handling
+│   ├── load_and_stage.py # DuckDB JSON unnesting and typing
+│   ├── transform.py    # Mart orchestration runner
+│   └── run_analytics.py# SQL metrics reporter
+├── pipeline.py         # Unified CLI orchestrator
+├── requirements.txt
+└── README.md
+```
