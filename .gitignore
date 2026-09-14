@@ -4,3 +4,7 @@ data/
 __pycache__/
 *.duckdb
 *.pyc
+
+# Allow exported Parquet marts for production serving
+!data/export/
+!data/export/*.parquet

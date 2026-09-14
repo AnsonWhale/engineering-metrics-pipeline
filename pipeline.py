@@ -4,6 +4,7 @@ from src.extract import fetch_pull_requests, save_raw_json
 from src.load_and_stage import initialize_database, stage_pull_requests
 from src.transform import run_transformations
 from src.run_analytics import run_analysis
+from src.export_parquet import export_marts_to_parquet
 
 def run_pipeline(pages: int):
     start_time = time.time()
@@ -29,7 +30,11 @@ def run_pipeline(pages: int):
     print("\n[3/4] RUNNING DIMENSIONAL TRANSFORMATIONS...")
     run_transformations()
 
-    # 4. REPORT / ANALYTICS
+    # 4. EXPORT
+    print("\n[4/5] EXPORTING MARTS TO PARQUET...")
+    export_marts_to_parquet()
+
+    # 5. REPORT / ANALYTICS
     print("\n[4/4] GENERATING ANALYTICAL METRICS...")
     run_analysis()
 
