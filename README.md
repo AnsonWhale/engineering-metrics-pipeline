@@ -55,3 +55,6 @@ Modeling: ANSI SQL (Common Table Expressions, Window Functions, Dimensional Mode
 ├── requirements.txt
 └── README.md
 ```
+
+## Live Dashboard
+Explore the interactive metrics live: [https://your-app-name.streamlit.app](https://your-app-name.streamlit.app)
