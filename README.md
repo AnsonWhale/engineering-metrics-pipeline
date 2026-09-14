@@ -57,4 +57,4 @@ Modeling: ANSI SQL (Common Table Expressions, Window Functions, Dimensional Mode
 ```
 
 ## Live Dashboard
-Explore the interactive metrics live: [https://your-app-name.streamlit.app](https://your-app-name.streamlit.app)
+Explore the interactive metrics live: [https://engineering-metrics-pipeline-sjyjgkucjzpjmqunnixspj.streamlit.app/]
