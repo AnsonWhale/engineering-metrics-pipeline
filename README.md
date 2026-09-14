@@ -1,6 +1,7 @@
 # GitHub Engineering Metrics ELT Pipeline
 
 An automated, local ELT (Extract, Load, Transform) data pipeline tracking engineering velocity, code review latency, and contributor dynamics across major open-source repositories (`duckdb/duckdb` vs. `pola-rs/polars`).
+Update: Included streamlit dashboard.
 
 ## Architecture & Data Flow
 
@@ -34,6 +35,8 @@ Language: Python 3.10+
 Storage & Engine: DuckDB (Embedded OLAP)
 
 Ingestion: requests, python-dotenv
+
+Dashboard: Parquet, Streamlit, Plotly
 
 Modeling: ANSI SQL (Common Table Expressions, Window Functions, Dimensional Modeling)
 
